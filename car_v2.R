@@ -10,7 +10,7 @@ d <- fromJSON(resURL)
 ## MAIN FUNCTION
 ## get true market value (TMV) by inputing data frame of cars ('c') extracted from carlist variable
 tmv <- function(d, make, model, year, zip = "21231", condition = "Average") {
-    d <- carlist(d)
+
     c <- findcar(d, make, model, year)
     style <- getstyle(c)
     style$style_id <- as.character(style$style_id)
@@ -50,6 +50,9 @@ carlist <- function(d) {
     }
     carlist
 }
+
+## auotmatically call the function to convert JSON to data frame
+d <- carlist(d)
 
 
 ## reduce down full car list to list of car of interst based on make, model and year
